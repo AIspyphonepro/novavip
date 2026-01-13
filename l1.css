@@ -1,0 +1,194 @@
+/* l1.css - Mobile First Legendary Design */
+
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;800&display=swap');
+
+:root {
+    --bg-dark: #0a0e17;
+    --bg-card: rgba(30, 41, 59, 0.6); /* شفافية أكثر للهاتف */
+    --primary: #6366f1;
+    --accent: #8b5cf6;
+    --highlight: #22d3ee;
+    --gold: #fbbf24;
+    --text-main: #f8fafc;
+    --text-muted: #cbd5e1; /* تفتيح اللون قليلاً للقراءة على الجوال */
+    --glass-border: rgba(255, 255, 255, 0.08);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    -webkit-tap-highlight-color: transparent; /* إزالة لون النقر الازرق في الموبايل */
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    font-family: 'Cairo', sans-serif;
+    line-height: 1.6;
+    direction: rtl;
+    overflow-x: hidden; /* منع التمرير الأفقي تماماً */
+    background-image: 
+        radial-gradient(circle at 0% 0%, rgba(99, 102, 241, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 100% 100%, rgba(139, 92, 246, 0.1) 0%, transparent 50%);
+}
+
+/* Typography responsive */
+h1 { font-size: clamp(1.8rem, 5vw, 3.5rem); margin-bottom: 1rem; line-height: 1.2; font-weight: 800; }
+h2 { font-size: clamp(1.5rem, 4vw, 2.5rem); margin-bottom: 1rem; font-weight: 700; }
+h3 { font-size: 1.3rem; margin-bottom: 0.8rem; font-weight: 600; }
+p { font-size: 1rem; margin-bottom: 1rem; }
+
+.gradient-text {
+    background: linear-gradient(135deg, var(--highlight), var(--accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+}
+
+/* Container responsive */
+.container {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px; /* مسافة أمان للحواف في الموبايل */
+}
+
+.section {
+    padding: 60px 0;
+}
+
+/* Hero Section */
+.hero {
+    min-height: 85vh; /* مناسب لشاشات الهواتف الطويلة */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding-top: 80px;
+}
+
+/* Cards Style */
+.nova-card {
+    background: var(--bg-card);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    padding: 25px; /* تقليل الحواف الداخلية للموبايل */
+    margin-bottom: 25px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Feature Grid - يتحول لعمود واحد في الهاتف */
+.features-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* افتراضياً عمود واحد للموبايل */
+    gap: 20px;
+}
+
+/* للشاشات الأكبر من الموبايل */
+@media (min-width: 768px) {
+    .features-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .nova-card { padding: 40px; }
+}
+
+.feature-icon {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    display: block;
+}
+
+/* Buttons */
+.btn-nova {
+    display: block; /* زر كامل العرض في الموبايل */
+    width: 100%;
+    max-width: 350px; /* حد أقصى للعرض */
+    margin: 20px auto 0;
+    padding: 18px 30px;
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+    color: white;
+    font-weight: 700;
+    font-size: 1.1rem;
+    border-radius: 12px;
+    text-decoration: none;
+    text-align: center;
+    box-shadow: 0 10px 20px rgba(99, 102, 241, 0.3);
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.btn-nova:active {
+    transform: scale(0.98);
+}
+
+/* Highlight Box */
+.highlight-box {
+    background: rgba(34, 211, 238, 0.05);
+    border-right: 3px solid var(--highlight);
+    padding: 15px;
+    border-radius: 4px;
+    margin: 15px 0;
+    font-size: 0.95rem;
+}
+
+/* Stats Section Mobile */
+.stats-container {
+    display: flex;
+    flex-direction: column; /* عمودي للموبايل */
+    gap: 30px;
+    margin-top: 30px;
+}
+
+@media (min-width: 768px) {
+    .stats-container {
+        flex-direction: row;
+        justify-content: space-around;
+    }
+}
+
+.stat-item h3 {
+    font-size: 3rem;
+    line-height: 1;
+    margin-bottom: 5px;
+}
+
+/* Guarantee List */
+.guarantee-list {
+    list-style: none;
+    padding: 0;
+    text-align: right;
+}
+
+.guarantee-list li {
+    position: relative;
+    padding-right: 35px;
+    margin-bottom: 20px;
+}
+
+.guarantee-list li i {
+    position: absolute;
+    right: 0;
+    top: 5px;
+    color: var(--gold);
+    font-size: 1.2rem;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 30px 20px;
+    border-top: 1px solid var(--glass-border);
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}

@@ -1,0 +1,146 @@
+/* l3.css - Corporate Hegemony Style */
+
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700;900&display=swap');
+
+:root {
+    --bg-deep: #020617;
+    --accent-blue: #38bdf8;
+    --nova-purple: #8b5cf6;
+    --text-white: #f8fafc;
+    --text-dim: #94a3b8;
+    --glass: rgba(15, 23, 42, 0.8);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    background-color: var(--bg-deep);
+    color: var(--text-white);
+    font-family: 'Cairo', sans-serif;
+    direction: rtl;
+    line-height: 1.8;
+    overflow-x: hidden;
+}
+
+/* Background Animation */
+.bg-glow {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: radial-gradient(circle at 50% 50%, rgba(56, 189, 248, 0.05) 0%, transparent 70%);
+    z-index: -1;
+}
+
+.container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 20px; }
+
+/* Hero Section */
+.about-hero {
+    padding: 80px 0 40px;
+    text-align: center;
+}
+
+.logo-container {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 30px;
+    border-radius: 30px;
+    overflow: hidden;
+    border: 2px solid var(--accent-blue);
+    box-shadow: 0 0 30px rgba(56, 189, 248, 0.3);
+    animation: pulse-logo 3s infinite;
+}
+
+.logo-container img { width: 100%; height: 100%; object-fit: cover; }
+
+@keyframes pulse-logo {
+    0% { transform: scale(1); box-shadow: 0 0 20px rgba(56, 189, 248, 0.3); }
+    50% { transform: scale(1.05); box-shadow: 0 0 40px rgba(56, 189, 248, 0.5); }
+    100% { transform: scale(1); box-shadow: 0 0 20px rgba(56, 189, 248, 0.3); }
+}
+
+h1.massive-title {
+    font-size: clamp(2.5rem, 8vw, 4.5rem);
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    background: linear-gradient(to bottom, #fff 30%, #64748b);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Stats Matrix */
+.stats-matrix {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin: 40px 0;
+}
+
+.stat-box {
+    background: var(--glass);
+    padding: 20px;
+    border-radius: 15px;
+    border: 1px solid rgba(255,255,255,0.05);
+    text-align: center;
+}
+
+.stat-box h2 { color: var(--accent-blue); font-size: 2rem; }
+.stat-box p { font-size: 0.8rem; color: var(--text-dim); }
+
+/* Text Content Sections */
+.content-block {
+    margin-bottom: 60px;
+}
+
+.content-block h2 {
+    font-size: 1.8rem;
+    color: var(--accent-blue);
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.content-block p {
+    color: var(--text-dim);
+    font-size: 1.1rem;
+    text-align: justify;
+}
+
+/* Map / Global Reach Visual */
+.global-reach {
+    background: rgba(56, 189, 248, 0.03);
+    border-radius: 25px;
+    padding: 30px;
+    border: 1px dashed rgba(56, 189, 248, 0.2);
+    margin: 40px 0;
+}
+
+.region-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.tag {
+    background: rgba(255,255,255,0.05);
+    padding: 5px 15px;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+/* Interactive Card: The Command Center */
+.command-center {
+    background: linear-gradient(145deg, #0f172a, #020617);
+    padding: 30px;
+    border-radius: 20px;
+    border-right: 5px solid var(--nova-purple);
+    margin: 40px 0;
+}
+
+/* Desktop override */
+@media (min-width: 768px) {
+    .stats-matrix { grid-template-columns: repeat(4, 1fr); }
+    .content-block { padding: 0 100px; }
+}
